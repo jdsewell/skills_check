@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<center><h1>Posts</h1>
+<%= link_to 'New Post', new_post_path, class: "btn btn-primary" %></center>
+<br>
+<div class="container">
+<% @posts.each do |post| %>
+  <div class="well">
+  <h4><%= post.user.email %></h4>
+  <p><%= post.message %></p>
+  
+  <%= link_to 'Show', post %>
+  <%= link_to 'Edit', edit_post_path(post) %>
+  <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+  </div>
+  <br>
+<% end %>
+</div>
+<center><%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-danger" %></center>
+
+
